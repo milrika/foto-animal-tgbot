@@ -2,7 +2,7 @@ import telebot
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 from dotenv import load_dotenv
 import os
-from services import get_cat_img, get_duck_img, get_dog_img
+from services import get_cat_img, get_duck_img, get_dog_img, get_taxik_img
 
 load_dotenv()
 API_TOKEN = os.environ.get('API_TOKEN')
@@ -15,7 +15,8 @@ def send_welcome(message):
     btn_cat = KeyboardButton('котеки')
     btn_duck = KeyboardButton('утке')
     btn_dog = KeyboardButton('собако')
-    markup.add(btn_cat, btn_duck, btn_dog)
+    btn_taxik = KeyboardButton('🌭🌭!!!')
+    markup.add(btn_cat, btn_duck, btn_dog, btn_taxik)
 
     bot.send_message(message.chat.id, 'prive', reply_markup=markup)
 
@@ -28,7 +29,10 @@ def send_img(message):
         bot.send_photo(message.chat.id, get_duck_img(), 'привет, я утка!')
 
     elif message.text == 'собако':
-        bot.send_photo(message.chat.id, get_dog_api(), 'привет, я собако!')
+        bot.send_photo(message.chat.id, get_dog_img(), 'привет, я собако!')
+
+    elif message.text == '🌭🌭!!!':
+        bot.send_photo(message.chat.id, get_taxik_img(), 'привет, я 🌭🌭!!!')
 
 
 bot.infinity_polling(skip_pending=True)
