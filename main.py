@@ -2,7 +2,7 @@ import telebot
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 from dotenv import load_dotenv
 import os
-from services import get_cat_img, get_duck_img, get_dog_api
+from services import get_cat_img, get_duck_img, get_dog_img
 
 load_dotenv()
 API_TOKEN = os.environ.get('API_TOKEN')
