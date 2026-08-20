@@ -7,38 +7,57 @@ TAXIK_API = 'https://dog.ceo/api/breed/dachshund/images/random'
 
 
 def get_cat_img():
-    response = requests.get(CAT_API)
-    response.raise_for_status()
+    try:
+        response = requests.get(CAT_API)
+        response.raise_for_status()
 
-    data = response.json()
-    img_cat = data[0]['url']
+        data = response.json()
+        img_cat = data[0]['url']
 
-    return img_cat
+        return img_cat
+
+    except Exception as e:
+        print(f'ошибка {e}')
+        return None
 
 def get_duck_img():
-    response = requests.get(DUCK_API)
-    response.raise_for_status()
+    try:
+        response = requests.get(DUCK_API)
+        response.raise_for_status()
 
-    data = response.json()
-    img_duck = data['url']
+        data = response.json()
+        img_duck = data['url']
 
-    return img_duck
+        return img_duck
+
+    except Exception as e:
+        print(f'ошибка {e}')
+        return None
 
 def get_dog_img():
-    response = requests.get(DOG_API)
-    response.raise_for_status()
+    try:
+        response = requests.get(DOG_API)
+        response.raise_for_status()
 
-    data = response.json()
-    img_dog = data[0]['url']
+        data = response.json()
+        img_dog = data[0]['url']
 
-    return img_dog
+        return img_dog
+
+    except Exception as e:
+        print(f'ошибка {e}')
+        return None
 
 def get_taxik_img():
-    response = requests.get(TAXIK_API)
-    response.raise_for_status()
+    try:
+        response = requests.get(TAXIK_API)
+        response.raise_for_status()
 
-    data = response.json()
-    img_taxik = data['message']
+        data = response.json()
+        img_taxik = data['message']
 
-    return img_taxik 
+        return img_taxik 
     
+    except Exception as e:
+        print(f'ошибка {e}')
+        return None
