@@ -23,16 +23,48 @@ def send_welcome(message):
 @bot.message_handler(content_types=['text'])
 def send_img(message):
     if message.text == 'котеки':
-        bot.send_photo(message.chat.id, get_cat_img(), caption='привет, я котек!')
+        url = get_cat_img()
+
+        if url:
+            try:
+                bot.send_photo(message.chat.id, url, caption='привет, я котек!')
+            except Exception as e: print(f'ошибка {e}')
+        else:
+            bot.send_message(message.chat.id, 'Неудалось достать фото кота')
 
     elif message.text == 'утке':
-        bot.send_photo(message.chat.id, get_duck_img(), 'привет, я утка!')
+        url = get_duck_img()
+
+        if url:
+            try:
+                bot.send_photo(
+                    message.chat.id, url, 'привет, я утка!')
+            except Exception as e:
+                print(f'ошибка {e}')
+        else:
+            bot.send_message(message.chat.id, 'Неудалось достать фото утки')
+                 
 
     elif message.text == 'собако':
-        bot.send_photo(message.chat.id, get_dog_img(), 'привет, я собако!')
+        url = get_dog_img()
+
+        if url:
+            try:
+                bot.send_photo(message.chat.id, url, 'привет, я собако!')
+            except Exception as e:
+                print(f'ошибка {e}')
+        else:
+            bot.send_message(message.chat.id, 'Неудалось достать фото собаки')
 
     elif message.text == '🌭🌭!!!':
-        bot.send_photo(message.chat.id, get_taxik_img(), 'привет, я 🌭🌭!!!')
+        url = get_taxik_img()
 
+        if url:
+            try:
+                bot.send_photo(message.chat.id, url, 'привет, я 🌭🌭!!!')
+            except Exception as e:
+                print(f'ошибка {e}')
+        else:
+            bot.send_message(message.chat.id, 'Неудалось достать фото 🌭🌭')
 
 bot.infinity_polling(skip_pending=True)
